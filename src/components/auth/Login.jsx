@@ -33,45 +33,54 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-blue-100">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-bold mb-4  text-blue-500">Giriş Yap</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label htmlFor="email" className="block text-gray-700">Email:</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              onChange={handleChange}
-              className="form-input mt-1 block w-full text-4xl rounded-md shadow-sm"
-            />
-          </div>
-          <div>
-            <label htmlFor="password" className="block text-gray-700">Şifre:</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={password}
-              onChange={handleChange}
-              className="form-input mt-1 block w-full text-4xl rounded-md shadow-sm"
-            />
-          </div>
-          <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
-            Giriş Yap
-          </button>
-          <p className="mt-4 text-center text-gray-700">
-            Hesabınız yok mu?{' '}
-            <Link to="/register" className="text-blue-500 hover:underline">
-              Hemen kayıt olun.
-            </Link>
-          </p>
-        </form>
+    <div className="flex flex-col md:flex-row min-h-screen">
+      <div className="md:w-1/2 bg-black text-white p-10 hidden md:block">
+        <h2 className="text-3xl font-bold mb-4">Slogan veya Mesajlar</h2>
+        <p className="text-lg">Buraya istediğiniz slogan veya mesajları ekleyebilirsiniz.</p>
+      </div>
+      <div className="md:w-1/2 flex md:items-center justify-center pt-60 md:pt-0">
+        <div className="max-w-md w-full bg-white rounded-lg shadow-md p-6 md:mx-aut0">
+          <h2 className="text-2xl font-bold mb-4 text-blue-500">Giriş Yap</h2>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label htmlFor="email" className="block text-gray-700">Email:</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={email}
+                onChange={handleChange}
+                className="form-input mt-1 block w-full text-4xl rounded-md shadow-sm"
+              />
+            </div>
+            <div>
+              <label htmlFor="password" className="block text-gray-700">Şifre:</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={handleChange}
+                className="form-input mt-1 block w-full text-4xl rounded-md shadow-sm"
+              />
+            </div>
+            <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+              Giriş Yap
+            </button>
+            <p className="mt-4 text-center text-gray-700">
+              Hesabınız yok mu?{' '}
+              <Link to="/register" className="text-blue-500 hover:underline">
+                Hemen kayıt olun.
+              </Link>
+            </p>
+          </form>
+        </div>
       </div>
     </div>
   );
 };
 
 export default Login;
+
+
+

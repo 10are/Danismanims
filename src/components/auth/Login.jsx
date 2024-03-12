@@ -1,15 +1,17 @@
+// Login.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom'; // Örnek olarak React Router kullanıldı, kendi projenize uygun olanı kullanın
+
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    username: '',
     email: '',
     password: ''
   });
 
-  const { username, email, password } = formData;
+  const { email, password } = formData;
   const navigate = useNavigate();
 
   const handleChange = e => {
@@ -20,7 +22,6 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post('http://127.0.0.1:8000/auth/login/', {
-        username,
         email,
         password
       });
@@ -32,46 +33,41 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-bold mb-4 text-blue-500">Giriş Yap</h2>
+    <div className="flex items-center justify-center min-h-screen bg-blue-100">
+      <div className="max-w-md w-full bg-white rounded-lg shadow-md p-6">
+        <h2 className="text-2xl font-bold mb-4  text-blue-500">Giriş Yap</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-gray-700">Kullanıcı Adı:</label>
-            <input
-              type="text"
-              name="username"
-              value={username}
-              onChange={handleChange}
-              className="form-input mt-1 block w-full rounded-md shadow-sm"
-            />
-          </div>
-          <div>
-            <label className="block text-gray-700">Email:</label>
+            <label htmlFor="email" className="block text-gray-700">Email:</label>
             <input
               type="email"
+              id="email"
               name="email"
               value={email}
               onChange={handleChange}
-              className="form-input mt-1 block w-full rounded-md shadow-sm"
+              className="form-input mt-1 block w-full text-4xl rounded-md shadow-sm"
             />
           </div>
           <div>
-            <label className="block text-gray-700">Şifre:</label>
+            <label htmlFor="password" className="block text-gray-700">Şifre:</label>
             <input
               type="password"
+              id="password"
               name="password"
               value={password}
               onChange={handleChange}
-              className="form-input mt-1 block w-full rounded-md shadow-sm"
+              className="form-input mt-1 block w-full text-4xl rounded-md shadow-sm"
             />
           </div>
           <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
             Giriş Yap
           </button>
-          <button type="button" onClick={() => navigate('/register')} className="w-full mt-4 bg-gray-300 text-gray-700 py-2 px-4 rounded hover:bg-gray-400 focus:outline-none">
-            Hesabım Yok
-          </button>
+          <p className="mt-4 text-center text-gray-700">
+            Hesabınız yok mu?{' '}
+            <Link to="/register" className="text-blue-500 hover:underline">
+              Hemen kayıt olun.
+            </Link>
+          </p>
         </form>
       </div>
     </div>

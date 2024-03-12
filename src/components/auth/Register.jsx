@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom'; 
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -41,7 +42,7 @@ const Register = () => {
               value={username}
               onChange={handleChange}
               required
-              className="mt-1 block w-full rounded-md shadow-sm"
+              className="mt-1 block w-full text-4xl rounded-md shadow-sm"
             />
           </div>
           <div>
@@ -53,7 +54,7 @@ const Register = () => {
               value={email}
               onChange={handleChange}
               required
-              className="mt-1 block w-full rounded-md shadow-sm"
+              className="mt-1 block w-full text-4xl rounded-md shadow-sm"
             />
           </div>
           <div>
@@ -65,7 +66,7 @@ const Register = () => {
               value={password1}
               onChange={handleChange}
               required
-              className="mt-1 block w-full rounded-md shadow-sm"
+              className="mt-1 block w-full text-4xl rounded-md shadow-sm"
             />
           </div>
           <div>
@@ -77,15 +78,18 @@ const Register = () => {
               value={password2}
               onChange={handleChange}
               required
-              className="mt-1 block w-full rounded-md shadow-sm"
+              className="mt-1 block w-full rounded-md text-4xl shadow-sm"
             />
           </div>
           <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
             Kayıt Ol
           </button>
-          <button type="button" onClick={() => navigate('/login')} className="w-full mt-4 bg-gray-300 text-gray-700 py-2 px-4 rounded hover:bg-gray-400 focus:outline-none">
-            Hesabım Var
-          </button>
+          <p className="mt-4 text-center text-gray-700">
+            Zaten hesabınız var mı?{' '}
+            <Link to="/login" className="text-blue-500 hover:underline">
+              Giriş yapın.
+            </Link>
+          </p>
         </form>
       </div>
     </div>
